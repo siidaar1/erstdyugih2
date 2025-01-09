@@ -24,7 +24,9 @@ semaphore = threading.Semaphore(max_concurrent_requests)
 # Function to scrape information from the website
 def scrape_lot(lot_number):
     chrome_options = Options()
-    chrome_options.headless = True
+    # chrome_options.add_argument("--headless")  # Run Chrome in headless mode (no GUI)
+    chrome_options.add_argument("--no-sandbox")  
+    chrome_options.add_argument("--disable-dev-shm-usage")
 
     # Ensure ChromeDriver is already installed and in PATH
     driver = webdriver.Chrome(options=chrome_options)
